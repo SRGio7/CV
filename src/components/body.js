@@ -1,3 +1,5 @@
+// import {firebase} from "../firebase"
+
 const BodyCV = () => {
   return (
     <div className="container">
@@ -8,7 +10,10 @@ const BodyCV = () => {
       <div className="main">
         <div className="left-section">
           <div className="profile-pic">
-            <img src="pfp.jpg" alt="Profile" />
+            <img
+              src={process.env.PUBLIC_URL + "pfp.jpg"}
+              alt="Profile"
+            />
           </div>
           <h1 className="name">
             Sergio <span className="highlight">Regar</span>
