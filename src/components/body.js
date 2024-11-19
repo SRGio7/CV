@@ -41,9 +41,9 @@ const BodyCV = () => {
             <p>
               <strong>Bachelor of Science in Computer Science</strong>
             </p>
-            <p>University of ABC (2016 - 2020)</p>
+            <p>University of klabat (2022 - 2025)</p>
             <p>
-              Relevant coursework: Web Development, UI/UX Design, Algorithms and
+              Relevant coursework: Web Development,Cloud, Algorithms and
               Data Structures
             </p>
           </div>
