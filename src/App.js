@@ -1,6 +1,7 @@
 import BodyCV from "./components/body";
 
-function App() {
+
+function App(){
   return (
     <div>
       <BodyCV/>
