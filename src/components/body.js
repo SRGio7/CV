@@ -10,10 +10,7 @@ const BodyCV = () => {
       <div className="main">
         <div className="left-section">
           <div className="profile-pic">
-            <img
-              src={process.env.PUBLIC_URL + "pfp.jpg"}
-              alt="Profile"
-            />
+            <img src={process.env.PUBLIC_URL + "pfp.jpg"} alt="Profile" />
           </div>
           <h1 className="name">
             Sergio <span className="highlight">Regar</span>
@@ -41,10 +38,11 @@ const BodyCV = () => {
             <p>
               <strong>Bachelor of Science in Computer Science</strong>
             </p>
+            <p>In-Progress</p>
             <p>University of klabat (2022 - 2025)</p>
             <p>
-              Relevant coursework: Web Development,Cloud, Algorithms and
-              Data Structures
+              Relevant coursework: Web Development,Cloud, Algorithms and Data
+              Structures
             </p>
           </div>
           <div className="section">
