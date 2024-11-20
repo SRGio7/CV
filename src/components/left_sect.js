@@ -4,31 +4,54 @@ import database from "../firebase";
 
 const InfoDiri = () => {
   const [data, setData] = useState(null);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const dbRef = ref(database, "data-path"); // Ganti "data-path" dengan path di Realtime Database
+    const dbRef = ref(database, "data-path"); 
     const unsubscribe = onValue(dbRef, (snapshot) => {
       const value = snapshot.val();
       setData(value);
     });
 
-    // Cleanup listener saat komponen unmount
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    const dbRef = ref(database, "images"); 
+    const unsubscribe = onValue(dbRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        // Konversi objek menjadi array
+        const imageArray = Object.values(data);
+        setImages(imageArray);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
 
   return (
     <div className="left-section">
       <div className="profile-pic">
-        <img src={process.env.PUBLIC_URL + "pfp.jpg"} alt="Profile" />
+        {/* <img src={process.env.PUBLIC_URL + "pfp.jpg"} alt="Profile" /> */}
+        
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image.base64}
+            alt={`Images ${index + 1}`}
+          />
+        ))}
+
       </div>
 
       {data && (
         <>
           <h1 className="name">
-            <span >{data.nama}</span>
+            <span>{data.nama}</span>
             <span className="highlight"> {data.marga}</span>
           </h1>
-
         </>
       )}
 
