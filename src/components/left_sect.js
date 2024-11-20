@@ -6,22 +6,26 @@ const InfoDiri = () => {
   const [data, setData] = useState(null);
   const [images, setImages] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    const dbRef = ref(database, "data-path"); 
+    const dbRef = ref(database, "data-path");
     const unsubscribe = onValue(dbRef, (snapshot) => {
       const value = snapshot.val();
-      setData(value);
+      if (value) {
+        setData(value);
+        setIsLoading(false);
+      }
     });
 
     return () => unsubscribe();
   }, []);
 
   useEffect(() => {
-    const dbRef = ref(database, "images"); 
+    const dbRef = ref(database, "images");
     const unsubscribe = onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        // Konversi objek menjadi array
         const imageArray = Object.values(data);
         setImages(imageArray);
       }
@@ -30,20 +34,22 @@ const InfoDiri = () => {
     return () => unsubscribe();
   }, []);
 
-
   return (
     <div className="left-section">
       <div className="profile-pic">
         {/* <img src={process.env.PUBLIC_URL + "pfp.jpg"} alt="Profile" /> */}
-        
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={image.base64}
-            alt={`Images ${index + 1}`}
-          />
-        ))}
 
+        {isLoading ? (
+          <h1>
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </h1>
+        ) : (
+          images.map((image, index) => (
+            <img key={index} src={image.base64} alt={`Images ${index + 1}`} />
+          ))
+        )}
       </div>
 
       {data && (
@@ -60,17 +66,24 @@ const InfoDiri = () => {
       </h1> */}
       <p className="position">Cloud Engineer</p>
       <div className="information">
-        <h3>INFORMATION</h3>
+        <div style={{ display: "flex" }}>
+          <i class="bi bi-info-circle" style={{ marginRight: "3px", fontSize:"15px"}}></i>
+          <h3>INFORMATION</h3>
+        </div>
         <p>
+          <i class="bi bi-telephone" style={{ marginRight: "3px" }}></i>
           <strong>Phone:</strong> +62-8953-9733-6809
         </p>
         <p>
+          <i class="bi bi-envelope" style={{ marginRight: "3px" }}></i>
           <strong>Email:</strong> sergioregar07@gmail.com
         </p>
         <p>
+          <i class="bi bi-geo-alt" style={{ marginRight: "3px" }}></i>
           <strong>Address:</strong> Jln pingkan matindas, Manado, 95127
         </p>
         <p>
+          <i class="bi bi-github" style={{ marginRight: "3px" }}></i>
           <strong>Github:</strong>
           <a
             href="https://github.com/SRGio7"
