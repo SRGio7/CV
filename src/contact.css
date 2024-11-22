@@ -1,0 +1,60 @@
+.container-forum {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  background-color: blue;
+}
+
+.wrapper-forum {
+  position: absolute;
+  background-color: red;
+  border-radius: 4px;
+  width: 400px;
+  height: 400px;
+}
+
+.form-contact {
+  /* box-shadow: 10px 10px; */
+  padding: 20px;
+}
+
+.form-contact input {
+  display: block;
+  height: 30px;
+  width: 100%;
+  outline: none;
+}
+.form-contact textarea {
+  display: block;
+  width: 172px;
+  height: 200px;
+  width: 100%;
+  margin-bottom: 10px;
+  resize: none;
+  outline: none;
+}
+
+button {
+  font-size: 20px;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border-radius: 2px;
+}
+
+.button:hover {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  color: white;
+  color: rgb(57, 55, 55);
+  border-radius: 2px;
+}
+
+.form-contact label {
+  color: black;
+}

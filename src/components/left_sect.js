@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 import database from "../firebase";
+import { Link } from "react-router-dom";
 
 const InfoDiri = () => {
+
   const [data, setData] = useState(null);
   const [images, setImages] = useState([]);
 
@@ -54,10 +56,16 @@ const InfoDiri = () => {
 
       {data && (
         <>
-          <h1 className="name">
-            <span>{data.nama}</span>
-            <span className="highlight"> {data.marga}</span>
-          </h1>
+          <div style={{display:"flex",}}>
+            <h1 className="name">
+              <span>{data.nama}</span>
+              <span className="highlight"> {data.marga}</span>
+            </h1>
+
+            <Link style={{textDecoration:"none",marginLeft:"88px",marginTop:"0px" }} to={"/contact"}>
+              <h3 style={{backgroundColor:"green", color:"white",padding:"3px 5px",borderRadius:"7px" }}>Contact</h3>
+            </Link>
+          </div>
         </>
       )}
 
@@ -67,7 +75,10 @@ const InfoDiri = () => {
       <p className="position">Cloud Engineer</p>
       <div className="information">
         <div style={{ display: "flex" }}>
-          <i class="bi bi-info-circle" style={{ marginRight: "3px", fontSize:"15px"}}></i>
+          <i
+            class="bi bi-info-circle"
+            style={{ marginRight: "3px", fontSize: "15px" }}
+          ></i>
           <h3>INFORMATION</h3>
         </div>
         <p>
