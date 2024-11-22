@@ -25,6 +25,7 @@ const ContactUs = () => {
 
   return (
     <div className="container-forum">
+      <h1 className="Reach-me">Reach me</h1>
       <div className="wrapper-forum">
         <form className="form-contact" ref={form} onSubmit={sendEmail}>
           <label>Name</label>
@@ -34,13 +35,19 @@ const ContactUs = () => {
           <label>Message</label>
           <textarea name="message" />
           <div style={{ display: "flex", alignItems: "center" }}>
-            <button className="button" type="submit" value="Send">
+            <button
+              style={{ marginRight: "20px" }}
+              className="button"
+              type="submit"
+              value="Send"
+            >
               Send
             </button>
-            <Link style={{ textDecoration: "none",cursor:"pointer" }} to={"/"}>
-              <button className="button back">
-                Back
-              </button>
+            <Link
+              style={{ textDecoration: "none", cursor: "pointer" }}
+              to={"/"}
+            >
+              <button className="button back">Back</button>
             </Link>
           </div>
         </form>
